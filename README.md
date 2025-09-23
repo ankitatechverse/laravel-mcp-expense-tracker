@@ -101,70 +101,12 @@ php artisan test --filter="update expense"
 php artisan test --filter="delete expense"
 ```
 
-### Web Testing
-Visit `http://localhost:8000/test-mcp` to test MCP functionality in your browser.
-
 ## 🔧 MCP Tools
 
-### 1. AddExpenseTool
-Adds new expenses to the tracker.
-
-**Parameters:**
-- `title` (required): Expense title
-- `description` (optional): Detailed description
-- `amount` (required): Expense amount (decimal)
-- `expense_date` (required): Date of expense (YYYY-MM-DD)
-- `payment_method` (required): Payment method
-
-**Payment Methods:**
-- `cash`
-- `credit_card`
-- `debit_card`
-- `bank_transfer`
-- `digital_wallet`
-
-### 2. GetExpensesTool
-Retrieves expenses with filtering options.
-
-**Parameters:**
-- `start_date` (optional): Filter from date
-- `end_date` (optional): Filter to date
-- `payment_method` (optional): Filter by payment method
-- `search` (optional): Search in title/description
-- `limit` (optional): Maximum results (1-100)
-- `sort_by` (optional): Sort field (amount, expense_date, created_at)
-- `sort_order` (optional): Sort direction (asc, desc)
-
-### 3. UpdateExpenseTool
-Updates existing expenses.
-
-**Parameters:**
-- `id` (required): Expense ID to update
-- `title` (optional): Updated title
-- `description` (optional): Updated description
-- `amount` (optional): Updated amount
-- `expense_date` (optional): Updated date
-- `payment_method` (optional): Updated payment method
-
-### 4. DeleteExpenseTool
-Deletes expenses by ID.
-
-**Parameters:**
-- `id` (required): Expense ID to delete
-
-## 📊 Database Schema
-
-### Expenses Table
-```sql
-- id (bigint, primary key)
-- title (varchar)
-- description (text, nullable)
-- amount (decimal 10,2)
-- expense_date (date)
-- payment_method (varchar)
-- created_at (timestamp)
-- updated_at (timestamp)
-```
+- **AddExpenseTool** - Add new expenses with title, description, amount, date, and payment method
+- **GetExpensesTool** - Retrieve expenses with filtering by date, payment method, and search
+- **UpdateExpenseTool** - Update existing expenses by ID
+- **DeleteExpenseTool** - Delete expenses by ID
 
 ## 🔍 MCP Inspector
 
@@ -176,44 +118,6 @@ php artisan mcp:inspector mcp/expense-tracker
 ### MCP Endpoint
 ```
 http://localhost:8000/mcp/expense-tracker
-```
-
-## 📝 API Examples
-
-### Add an Expense
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 1,
-  "method": "tools/call",
-  "params": {
-    "name": "add_expense",
-    "arguments": {
-      "title": "Lunch at Restaurant",
-      "description": "Business lunch with client",
-      "amount": 45.50,
-      "expense_date": "2024-01-15",
-      "payment_method": "credit_card"
-    }
-  }
-}
-```
-
-### Get Expenses
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 2,
-  "method": "tools/call",
-  "params": {
-    "name": "get_expenses",
-    "arguments": {
-      "limit": 10,
-      "sort_by": "amount",
-      "sort_order": "desc"
-    }
-  }
-}
 ```
 
 ## 🏗️ Project Structure
@@ -252,53 +156,6 @@ routes/
 - ✅ **Filtering** - Date range, payment method, search filtering
 - ✅ **Edge Cases** - Invalid IDs, missing fields, boundary conditions
 - ✅ **Database** - Database assertions and data integrity
-
-## 🚀 Deployment
-
-### Production Setup
-1. Set up production database
-2. Configure environment variables
-3. Run migrations: `php artisan migrate`
-4. Set up web server (Apache/Nginx)
-5. Configure MCP endpoint
-
-### Environment Variables
-```env
-APP_ENV=production
-APP_DEBUG=false
-DB_CONNECTION=mysql
-DB_HOST=your_production_host
-DB_DATABASE=your_production_db
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests for new functionality
-5. Run the test suite
-6. Submit a pull request
-
-## 📄 License
-
-This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
-## 🆘 Support
-
-For support and questions:
-- Create an issue on GitHub
-- Check the documentation
-- Review the test cases for usage examples
-
-## 🎯 Roadmap
-
-- [ ] Add expense categories
-- [ ] Implement user authentication
-- [ ] Add expense reports
-- [ ] Create dashboard interface
-- [ ] Add data export functionality
-- [ ] Implement expense budgets
 
 ---
 
