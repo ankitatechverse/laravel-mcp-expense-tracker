@@ -9,6 +9,8 @@ class Expense extends Model
 {
     /** @use HasFactory<\Database\Factories\ExpenseFactory> */
     use HasFactory;
+    
+    // Test comment for CodeRabbit review
 
     /**
      * The attributes that are mass assignable.
