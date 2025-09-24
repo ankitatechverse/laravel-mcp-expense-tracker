@@ -76,22 +76,16 @@ class UpdateExpenseTool extends Tool
                 ->description('The ID of the expense to update')
                 ->required(),
             'title' => $schema->string()
-                ->description('Updated title of the expense')
-                ->nullable(),
+                ->description('Updated title of the expense'),
             'description' => $schema->string()
-                ->description('Updated description of the expense')
-                ->nullable(),
+                ->description('Updated description of the expense'),
             'amount' => $schema->number()
-                ->description('Updated amount spent')
-                ->nullable(),
+                ->description('Updated amount spent'),
             'expense_date' => $schema->string()
-                ->format('date')
-                ->description('Updated date when the expense occurred (YYYY-MM-DD)')
-                ->nullable(),
+                ->description('Updated date when the expense occurred (YYYY-MM-DD)'),
             'payment_method' => $schema->string()
                 ->enum(['cash', 'credit_card', 'debit_card', 'bank_transfer', 'digital_wallet'])
-                ->description('Updated payment method')
-                ->nullable(),
+                ->description('Updated payment method'),
         ];
     }
 }

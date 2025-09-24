@@ -25,9 +25,7 @@ Route::get('/test-mcp', function () {
         ]);
         
         echo "✅ Add Expense: SUCCESS<br>";
-        $data = json_decode($response->getContent(), true);
-        echo "Created expense ID: " . $data['expense']['id'] . "<br>";
-        echo "Response: " . $response->getContent() . "<br>";
+        echo "Response: " . json_encode($response) . "<br>";
         
     } catch (Exception $e) {
         echo "❌ Add Expense: ERROR - " . $e->getMessage() . "<br>";
@@ -41,10 +39,7 @@ Route::get('/test-mcp', function () {
         ]);
         
         echo "✅ Get Expenses: SUCCESS<br>";
-        $data = json_decode($response->getContent(), true);
-        echo "Found " . $data['summary']['total_count'] . " expenses<br>";
-        echo "Total amount: $" . $data['summary']['total_amount'] . "<br>";
-        echo "Response: " . $response->getContent() . "<br>";
+        echo "Response: " . json_encode($response) . "<br>";
         
     } catch (Exception $e) {
         echo "❌ Get Expenses: ERROR - " . $e->getMessage() . "<br>";

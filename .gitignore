@@ -1,8 +1,14 @@
 *.log
 .DS_Store
+
+# Environment files
 .env
 .env.backup
 .env.production
+.env.local
+.env.*.local
+
+# IDE and Editor files
 .phpactor.json
 .phpunit.result.cache
 /.fleet
@@ -12,13 +18,50 @@
 /.vscode
 /.zed
 /auth.json
+Thumbs.db
+
+# Dependencies
 /node_modules
+/vendor
+
+# Build files
 /public/build
 /public/hot
 /public/storage
+
+# Storage files
 /storage/*.key
 /storage/pail
-/vendor
+/storage/logs/*.log
+
+# MCP specific
+.cursor/mcp.json
+mcp.json
+
+# Database
+/database/*.sqlite
+/database/*.db
+
+# Laravel specific
 Homestead.json
 Homestead.yaml
+npm-debug.log
+yarn-error.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Backup files
+*.bak
+*.backup

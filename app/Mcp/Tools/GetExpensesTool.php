@@ -92,36 +92,25 @@ class GetExpensesTool extends Tool
     {
         return [
             'start_date' => $schema->string()
-                ->format('date')
-                ->description('Filter expenses from this date (YYYY-MM-DD)')
-                ->nullable(),
+                ->description('Filter expenses from this date (YYYY-MM-DD)'),
             'end_date' => $schema->string()
-                ->format('date')
-                ->description('Filter expenses until this date (YYYY-MM-DD)')
-                ->nullable(),
+                ->description('Filter expenses until this date (YYYY-MM-DD)'),
             'payment_method' => $schema->string()
                 ->enum(['cash', 'credit_card', 'debit_card', 'bank_transfer', 'digital_wallet'])
-                ->description('Filter expenses by payment method')
-                ->nullable(),
+                ->description('Filter expenses by payment method'),
             'search' => $schema->string()
-                ->description('Search expenses by title or description')
-                ->nullable(),
+                ->description('Search expenses by title or description'),
             'limit' => $schema->integer()
                 ->description('Maximum number of expenses to return (1-100)')
-                ->minimum(1)
-                ->maximum(100)
-                ->default(20)
-                ->nullable(),
+                ->default(20),
             'sort_by' => $schema->string()
                 ->enum(['amount', 'expense_date', 'created_at'])
                 ->description('Sort expenses by this field')
-                ->default('expense_date')
-                ->nullable(),
+                ->default('expense_date'),
             'sort_order' => $schema->string()
                 ->enum(['asc', 'desc'])
                 ->description('Sort order')
-                ->default('desc')
-                ->nullable(),
+                ->default('desc'),
         ];
     }
 }
