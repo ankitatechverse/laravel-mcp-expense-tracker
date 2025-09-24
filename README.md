@@ -102,7 +102,7 @@ Create `.cursor/mcp.json` in your project root:
         "mcp:start",
         "expense-tracker"
       ],
-      "cwd": "/path/to/your/project"
+      "cwd": "."
     }
   }
 }

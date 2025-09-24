@@ -6,7 +6,7 @@
           "artisan",
           "boost:mcp"
         ],
-        "cwd": "D:/projects/ankita/laravel/mcp-demo"
+        "cwd": "."
       },
       "expense-tracker": {
         "command": "php",
@@ -15,7 +15,7 @@
           "mcp:start",
           "expense-tracker"
         ],
-        "cwd": "D:/projects/ankita/laravel/mcp-demo"
+        "cwd": "."
       }
     }
   }
