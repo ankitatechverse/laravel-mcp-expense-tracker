@@ -62,13 +62,11 @@ class AddExpenseTool extends Tool
                 ->description('The title of the expense (e.g., "Lunch at Restaurant")')
                 ->required(),
             'description' => $schema->string()
-                ->description('Optional detailed description of the expense')
-                ->nullable(),
+                ->description('Optional detailed description of the expense'),
             'amount' => $schema->number()
                 ->description('The amount spent (must be greater than 0)')
                 ->required(),
             'expense_date' => $schema->string()
-                ->format('date')
                 ->description('The date when the expense occurred (YYYY-MM-DD)')
                 ->required(),
             'payment_method' => $schema->string()

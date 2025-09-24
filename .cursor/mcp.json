@@ -1,11 +1,22 @@
 {
     "mcpServers": {
-        "laravel-boost": {
-            "command": "php",
-            "args": [
-                "artisan",
-                "boost:mcp"
-            ]
-        }
+      "laravel-boost": {
+        "command": "php",
+        "args": [
+          "artisan",
+          "boost:mcp"
+        ],
+        "cwd": "D:/projects/ankita/laravel/mcp-demo"
+      },
+      "expense-tracker": {
+        "command": "php",
+        "args": [
+          "artisan",
+          "mcp:start",
+          "expense-tracker"
+        ],
+        "cwd": "D:/projects/ankita/laravel/mcp-demo"
+      }
     }
-}
+  }
+  

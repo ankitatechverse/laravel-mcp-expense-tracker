@@ -86,38 +86,86 @@ php artisan test
 php artisan test tests/Feature/ExpenseTrackerMcpTest.php
 ```
 
-### Test Specific Functionality
+## 🤖 Testing with AI Assistants
+
+### Cursor IDE (Recommended) ✅
+
+**Step 1: Configure MCP Server**
+Create `.cursor/mcp.json` in your project root:
+```json
+{
+  "mcpServers": {
+    "expense-tracker": {
+      "command": "php",
+      "args": [
+        "artisan",
+        "mcp:start",
+        "expense-tracker"
+      ],
+      "cwd": "/path/to/your/project"
+    }
+  }
+}
+```
+
+**Step 2: Restart Cursor IDE**
+- Close and reopen Cursor IDE
+- Check MCP panel for "expense-tracker" server (should show green status)
+
+**Step 3: Test Commands**
+In Cursor chat, try these commands:
+```
+Add a 450 rupee grocery expense paid with debit card today
+Show me all expenses from this month
+Find all credit card expenses over 500 rupees
+Update expense ID 5 to 475 rupees
+Delete expense ID 3
+```
+
+**Expected Result:** Cursor will use your MCP tools directly to interact with your expense tracker.
+
+### MCP Inspector (Limited Support) ⚠️
+
+**Known Issues & Solutions:**
+
+**Issue 1: Path Separator Problems (Windows)**
 ```bash
-# Test adding expenses
-php artisan test --filter="add expense"
-
-# Test getting expenses
-php artisan test --filter="get expenses"
-
-# Test updating expenses
-php artisan test --filter="update expense"
-
-# Test deleting expenses
-php artisan test --filter="delete expense"
+Error: Could not open input file: D:projectsuserlaravelmcp-demoartisan
 ```
+**Root Cause:** MCP Inspector uses forward slashes (`D:/projects/user/...`) but Windows expects backslashes (`D:\projects\user\...`)
 
-## 🔧 MCP Tools
-
-- **AddExpenseTool** - Add new expenses with title, description, amount, date, and payment method
-- **GetExpensesTool** - Retrieve expenses with filtering by date, payment method, and search
-- **UpdateExpenseTool** - Update existing expenses by ID
-- **DeleteExpenseTool** - Delete expenses by ID
-
-## 🔍 MCP Inspector
-
-### Start MCP Inspector
+**Issue 2: SSE Connection Errors**
 ```bash
-php artisan mcp:inspector mcp/expense-tracker
+Error: Error POSTing to endpoint (HTTP 500): SSE connection not established
 ```
+**Root Cause:** Server-Sent Events connection fails between MCP Inspector and local MCP servers
 
-### MCP Endpoint
+**Issue 3: Command Spawn Errors**
+```bash
+Error: spawn mcp-server-everything ENOENT
 ```
-http://localhost:8000/mcp/expense-tracker
+**Root Cause:** MCP Inspector tries to spawn non-existent commands
+
+**Why It Works in Cursor but Not Inspector:**
+- ✅ **Cursor IDE**: Uses proper Windows path handling and direct MCP integration
+- ❌ **MCP Inspector**: Has cross-platform compatibility issues, especially on Windows
+
+**My Testing Experience:**
+
+I tested this MCP server in both **Cursor IDE** and **MCP Inspector**:
+
+- ✅ **Cursor IDE**: Works perfectly! All MCP tools function correctly
+- ❌ **MCP Inspector**: Encountered various connection errors when clicking "Connect"
+
+## 🎯 Quick Test Commands
+
+### For Cursor IDE:
+```
+"Add a 100 rupee expense for snacks paid with cash today"
+"Show me all my expenses"
+"Find expenses paid with credit card"
+"Update expense ID 2 to have amount 10 rupees"
+"Delete expense ID 3"
 ```
 
 ## 🏗️ Project Structure
